@@ -22,13 +22,11 @@ let pokemonList = [
     }
 ];
 
-// for loop to write out the pokemons with heights
-for (let i = 0; i < pokemonList.length; i++){
-    document.write(pokemonList[i].name + ' (Height: ' + pokemonList[i].height + ' m)');
-    // write "Wow, that's big!" if a pokemon is big
-    if (pokemonList[i].height > 0.6){
+//forEach loop to write out the pokemon names with heights
+pokemonList.forEach(function(pokemon){
+    document.write(pokemon.name + ' (Height: ' + pokemon.height + ' m)');
+    if (pokemon.height > 0.6){
         document.write(' - Wow, that\'s big!');
     }
-    // add a line break to the end of the loop
     document.write('<br>');
-}
+});
