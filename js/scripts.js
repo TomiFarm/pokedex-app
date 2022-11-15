@@ -23,10 +23,22 @@ let pokemonRepository = (function(){
         }
     ];
 
+    // function to add a new pokemon to the pokemonList
     function add(item) {
-        pokemonList.push(item);
+        // validation
+        if (typeof item !== "object"){
+            console.log('item data type must be an object');
+        }
+        else if (Object.keys(item) !== ['name', 'height', 'types']){
+            console.log('item object keys must be name, height and types');
+        }
+        else{
+            pokemonList.push(item);
+        }
+        
     }
 
+    // function to return the whole pokemonList
     function getAll() {
         return pokemonList;
     }
@@ -37,10 +49,10 @@ let pokemonRepository = (function(){
     };
 })();
 
-//forEach loop to write out the pokemon names with heights
-pokemonRepository = pokemonRepository.getAll(); // fetch pokemonList from the function
+// fetch pokemonList from the function
+pokemonRepository = pokemonRepository.getAll();
 
-//write out the pokemonRepository
+// for each loop to write out the pokemonRepository
 pokemonRepository.forEach(function(pokemon){
     document.write(pokemon.name + ' (Height: ' + pokemon.height + ' m)');
     if (pokemon.height > 0.6){
