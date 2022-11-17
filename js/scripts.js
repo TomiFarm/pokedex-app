@@ -23,6 +23,7 @@ let pokemonRepository = (function(){
         }
     ];
 
+    // function to create list of pokemons as buttons
     function addListItem(pokemon) {
         let pokemonList = document.querySelector('.pokemon-list');
         let listItem = document.createElement('li');
@@ -31,6 +32,16 @@ let pokemonRepository = (function(){
         button.classList.add('pokemon-button');
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
+        // Why this does not work? 
+        //button.addEventListener('click', showDetails(pokemon));
+        button.addEventListener('click', function(){
+            showDetails(pokemon);
+        });
+    }
+
+    // function to show pokemon details
+    function showDetails(pokemon){
+        console.log(pokemon);
     }
 
     // function to add a new pokemon to the pokemonList
