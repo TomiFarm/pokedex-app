@@ -23,6 +23,16 @@ let pokemonRepository = (function(){
         }
     ];
 
+    function addListItem(pokemon) {
+        let pokemonList = document.querySelector('.pokemon-list');
+        let listItem = document.createElement('li');
+        let button = document.createElement('button');
+        button.innerText = pokemon.name;
+        button.classList.add('pokemon-button');
+        listItem.appendChild(button);
+        pokemonList.appendChild(listItem);
+    }
+
     // function to add a new pokemon to the pokemonList
     function add(item) {
         // validation
@@ -45,21 +55,13 @@ let pokemonRepository = (function(){
 
     return {
         add: add,
-        getAll: getAll
+        getAll: getAll,
+        addListItem: addListItem
     };
 })();
 
-// fetch pokemonList from the function
-pokemonRepository = pokemonRepository.getAll();
 
 // for each loop to write out the pokemonRepository
-pokemonRepository.forEach(function(pokemon){
-    let pokemonList = document.querySelector('.pokemon-list');
-    let listItem = document.createElement('li');
-    let button = document.createElement('button');
-    button.innerText = pokemon.name;
-    button.classList.add('pokemon-button');
-    listItem.appendChild(button);
-    pokemonList.appendChild(listItem);
-
+pokemonRepository.getAll().forEach(function(pokemon){
+    pokemonRepository.addListItem(pokemon);
 });
