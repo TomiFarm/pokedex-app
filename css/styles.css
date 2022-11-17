@@ -1,9 +1,30 @@
 :root {
     --background-color: #eb7734;
     --text-color: #181c29;
+    --pokemon-button-color: #5a28ed;
 }
 
 body {
     background-color: var(--background-color);
     color: var(--text-color);
 }   
+
+.page-header {
+    display: flex;
+    width: 100%;
+    padding: 20px;
+}
+
+.pokemon-list {
+    list-style-type: none;
+}
+
+.pokemon-button {
+    text-decoration: none;
+    display: inline-block;
+    background-color: var(--pokemon-button-color);
+    color: var(--background-color);
+    width: 300px;
+    padding: 30px;
+    font-size: 20px;
+}

@@ -54,9 +54,12 @@ pokemonRepository = pokemonRepository.getAll();
 
 // for each loop to write out the pokemonRepository
 pokemonRepository.forEach(function(pokemon){
-    document.write(pokemon.name + ' (Height: ' + pokemon.height + ' m)');
-    if (pokemon.height > 0.6){
-        document.write(' - Wow, that\'s big!');
-    }
-    document.write('<br>');
+    let pokemonList = document.querySelector('.pokemon-list');
+    let listItem = document.createElement('li');
+    let button = document.createElement('button');
+    button.innerText = pokemon.name;
+    button.classList.add('pokemon-button');
+    listItem.appendChild(button);
+    pokemonList.appendChild(listItem);
+
 });
