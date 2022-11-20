@@ -1,21 +1,24 @@
 let pokemonRepository = (function(){
-    // list of pokemons with height and types
+    // list of pokemons as array
     let pokemonList = [];
     let apiUrl = 'https://pokeapi.co/api/v2/pokemon/?limit=150';
 
-
-
     // function to create list of pokemons as buttons
     function addListItem(pokemon) {
+        // select .pokemon-list unordered list
         let pokemonList = document.querySelector('.pokemon-list');
+        // create list item
         let listItem = document.createElement('li');
+        // create button
         let button = document.createElement('button');
+        // make button's text be pokemon name
         button.innerText = pokemon.name;
+        // make button's class .pokemon-button
         button.classList.add('pokemon-button');
+        // append list item and button
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
-        // Why this does not work? 
-        //button.addEventListener('click', showDetails(pokemon));
+        // add event listener for click to button
         button.addEventListener('click', function(){
             showDetails(pokemon);
         });
@@ -30,17 +33,12 @@ let pokemonRepository = (function(){
 
     // function to add a new pokemon to the pokemonList
     function add(item) {
-        pokemonList.push(item);
-        // validation
-        /*if (typeof item !== "object"){
-            console.log('item data type must be an object');
-        }
-        else if (Object.keys(item) !== ['name', 'height', 'types']){
-            console.log('item object keys must be name, height and types');
-        }
-        else{
+        if (typeof item === "object"){
             pokemonList.push(item);
-        }   */
+        }
+        else {
+            console.log('Pokemon data type is not object');
+        }
     }
 
     // function to return the whole pokemonList
@@ -55,7 +53,7 @@ let pokemonRepository = (function(){
             json.results.forEach(function(item){
                 let pokemon = {
                     name: item.name,
-                    detailsUrl: item.apiUrl
+                    detailsUrl: item.url
                 };
             add(pokemon);
             });   
