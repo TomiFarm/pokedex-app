@@ -24,10 +24,62 @@ let pokemonRepository = (function(){
         });
     }
 
+    function showModal(title, text) {
+        let modalContainer = document.querySelector('#modal-container');
+        
+        // clear all existing modal content
+        modalContainer.innerHTML = '';
+
+        // create a new <div> with class "modal"
+        let modal = document.createElement('div');
+        modal.classList.add('modal');
+        // create close button in modal
+        let closeButtonElement = document.createElement('button');
+        closeButtonElement.classList.add('modal-close');
+        closeButtonElement.innerText = 'Close';
+        closeButtonElement.addEventListener('click', hideModal);
+        // create title element in modal
+        let titleElement = document.createElement('h1');
+        titleElement.innerText = title;
+        // create content element in modal
+        let contentElement = document.createElement('p');
+        contentElement.innerText = 'Height: ' + text;
+        // append all above
+        modal.appendChild(closeButtonElement);
+        modal.appendChild(titleElement);
+        modal.appendChild(contentElement);
+        modalContainer.appendChild(modal);
+
+        // add class "is visible" to modal container to make it visible
+        modalContainer.classList.add('is-visible');
+
+        // event listener for closing modal by clicking outside of it
+        modalContainer.addEventListener('click', (e) => {
+            let target = e.target;
+            if (target === modalContainer) {
+                hideModal();
+            }
+        });
+    }
+
+    // function to hide modal
+    function hideModal() {
+        let modalContainer = document.querySelector('#modal-container');
+        modalContainer.classList.remove('is-visible');
+    }
+    // eventListener for closing modal by pressing esc
+    window.addEventListener('keydown', (e) => {
+        let modalContainer = document.querySelector('#modal-container');
+        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
+            hideModal();
+        }
+    });
+
+
     // function to show pokemon details
     function showDetails(pokemon){
         loadDetails(pokemon).then(function(){
-            console.log(pokemon);
+            showModal(pokemon.name, pokemon.height);
         });
     }
 
@@ -46,6 +98,7 @@ let pokemonRepository = (function(){
         return pokemonList;
     }
 
+    // function for loading pokemons from apiUrl and adding them to pokemonList array using add function
     function loadList(){
         return fetch(apiUrl).then(function (response){
             return response.json();

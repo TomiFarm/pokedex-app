@@ -28,3 +28,48 @@ body {
     padding: 30px;
     font-size: 20px;
 }
+
+#modal-container {
+    display: none;
+}
+
+#modal-container.is-visible {
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    /* to show above other content*/
+    z-index: 999;
+    /* to allow scrolling */
+    overflow: auto;
+    /* center modal */
+    display: grid;
+    text-align: center;
+}
+
+.modal {
+    margin: auto;
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background: var(--pokemon-button-color);
+    padding: 15px;
+    width: 100%;
+    max-width: 500px;
+}
+
+.modal-close {
+    float: right;
+}
+
+.modal h1 {
+/* to be determined later*/
+}
+
+.modal p {
+/* to be determined later*/
+}
