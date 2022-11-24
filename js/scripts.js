@@ -43,7 +43,8 @@ let pokemonRepository = (function(){
         titleElement.innerText = title;
         // create content element in modal
         let contentElement = document.createElement('p');
-        contentElement.innerHTML = 'Height: ' + pokemon.height + '<br>' + 'Types: ' + pokemon.types;
+        contentElement.innerHTML = 'Height: ' + pokemon.height + '<br>' + 'Types: ';
+      
         // create image element in modal
         let imgElement = document.createElement('img');
         imgElement.src = pokemonImage;
@@ -53,6 +54,12 @@ let pokemonRepository = (function(){
         modal.appendChild(contentElement);
         modal.appendChild(imgElement);
         modalContainer.appendChild(modal);
+
+        // add pokemon types to contentElement
+        pokemon.types.forEach(function(item){
+            let pokemonType = item.type.name;
+            contentElement.insertAdjacentHTML('beforeend', pokemonType + ' ');
+        });
 
         // add class "is visible" to modal container to make it visible
         modalContainer.classList.add('is-visible');
