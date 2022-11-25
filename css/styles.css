@@ -15,6 +15,11 @@ body {
     padding: 20px;
 }
 
+.page-header h1 {
+    font-size: 300%;
+    margin: auto;
+}
+
 .pokemon-list {
     list-style-type: none;
 }
