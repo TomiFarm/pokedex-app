@@ -9,12 +9,13 @@ let pokemonRepository = (function(){
         let pokemonList = document.querySelector('.pokemon-list');
         // create list item
         let listItem = document.createElement('li');
+        listItem.classList.add('list-inline-item');
         // create button
         let button = document.createElement('button');
         // make button's text be pokemon name
         button.innerText = pokemon.name;
         // make button's class .pokemon-button
-        button.classList.add('pokemon-button');
+        button.classList.add('pokemon-button','btn','btn-primary');
         // append list item and button
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
