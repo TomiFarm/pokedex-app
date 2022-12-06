@@ -57,7 +57,7 @@ body {
     text-align: center;
 }
 
-.modal {
+.modal-new {
     margin: auto;
     display: inline-block;
     box-sizing: border-box;
@@ -68,7 +68,7 @@ body {
     max-width: 500px;
 }
 
-.modal-close {
+/* .modal-close {
     float: right;
 }
 

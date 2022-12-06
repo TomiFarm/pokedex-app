@@ -16,8 +16,9 @@ let pokemonRepository = (function(){
         button.innerText = pokemon.name;
         // add classes to the button
         button.classList.add('pokemon-button','btn','btn-primary');
-        button.setAttribute('data-toggle', 'modal');
-        button.setAttribute('data-target', '#modal-container');
+        button.setAttribute('type', 'button');
+        button.setAttribute('data-toggle', 'pokemon-modal');
+        button.setAttribute('data-target', '#pokemon-modal');
         // append list item and button
         listItem.appendChild(button);
         pokemonList.appendChild(listItem);
@@ -35,7 +36,7 @@ let pokemonRepository = (function(){
 
         // create a new <div> with class "modal"
         let modal = document.createElement('div');
-        modal.classList.add('modal');
+        modal.classList.add('modal-new');
         // create close button in modal
         let closeButtonElement = document.createElement('button');
         closeButtonElement.classList.add('modal-close');
